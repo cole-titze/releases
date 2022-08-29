@@ -1,4 +1,4 @@
 #!/bin/bash
-~/source/repos/nhl-data-gatherer git pull
-~/source/repos/nhl-data-gatherer dotnet build LocalRunning --configuration Release --output ~/releases/nhl-player-gatherer/
-~/releases/nhl-player-gatherer/LocalRunning
+cd ~/source/repos/nhl-player-gatherer && git pull
+cd ~/source/repos/nhl-player-gatherer && dotnet build LocalRunning --configuration Release --output ~/Releases/nhl-player-gatherer/
+~/Releases/nhl-player-gatherer/LocalRunning
