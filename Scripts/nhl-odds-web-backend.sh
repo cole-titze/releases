@@ -1,4 +1,5 @@
 #!/bin/bash
+sudo docker stop nhl-backend
 sudo docker rm nhl-backend
 cd ~/source/repos/nhl-odds-web-backend && git pull
 sudo docker build -t coledev/nhl-backend .
