@@ -1,5 +1,6 @@
 #!/bin/bash
-cd ~/source/repos/nhl-game-predictor && git pull
-cp -r ~/source/repos/nhl-game-predictor/* ~/releases/nhl-game-predictor/
-export PYTHONPATH="${PYTHONPATH}:~/releases/nhl-game-predictor"
-cd ~/releases/nhl-game-predictor && python3 LocalRunning/local_running.py
+sudo docker stop game-predictor
+sudo docker rm game-predictor
+cat ~/secrets/github_pat | sudo docker login ghcr.io -u cole-titze --password-stdin
+sudo docker pull ghcr.io/cole-titze/nhl-game-predictor:latest
+sudo docker run --name game-predictor --env-file ~/secrets/.env-game-predictor -d ghcr.io/cole-titze/nhl-game-predictor:latest

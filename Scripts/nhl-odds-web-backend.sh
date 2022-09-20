@@ -1,6 +1,6 @@
 #!/bin/bash
-sudo docker stop nhl-backend
-sudo docker rm nhl-backend
-cd ~/source/repos/nhl-odds-web-backend && git pull
-sudo docker build -t coledev/nhl-backend .
-sudo docker run -p 8080:80 -d --name nhl-backend coledev/nhl-backend
+sudo docker stop odds-backend
+sudo docker rm odds-backend
+cat ~/secrets/github_pat | sudo docker login ghcr.io -u cole-titze --password-stdin
+sudo docker pull ghcr.io/cole-titze/nhl-odds-web-backend:latest
+sudo docker run --name odds-backend --env-file ~/secrets/.env-backend -p 8080:80 -d ghcr.io/cole-titze/nhl-odds-web-backend:latest
