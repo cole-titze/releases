@@ -6,7 +6,8 @@ cp -a ~/../../var/homeassistant/backups/. ~/backups/homeassistant/
 sudo rm -rf ~/../../var/homeassistant/backups/*
 
 # Keep 30 newest backups, delete others
-file_count=$(ls -t ~/backups/homeassistant/ | wc -l)
+cd ~/backups/homeassistant/
+file_count=$(ls -t | wc -l)
 if [ "$file_count" -gt 30 ]; then
-    ls -t ~/backups/homeassistant/ | tail -n +31 | xargs rm --
+    ls -t | tail -n +31 | xargs rm --
 fi
